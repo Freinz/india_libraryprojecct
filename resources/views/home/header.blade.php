@@ -34,8 +34,7 @@
             @if (Route::has('login'))
                
                     @auth
-
-                   
+                    
                         <x-app-layout>
                         </x-app-layout>
                    
