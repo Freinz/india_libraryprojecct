@@ -35,6 +35,21 @@
           
             <div class="div_center">
 
+            <div>
+
+              @if(session()->has('message'))
+
+              <div class="alert alert-success">
+                
+              <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">x</button>
+ 
+                {{session()->get('message')}}
+                
+              </div>
+
+              @endif
+            </div>
+
                 <h1 class="cat_label">Add Category</h1>
 
                 <form action="{{url('add_category')}}" method="Post">
