@@ -18,6 +18,24 @@
           color: white;
         }
 
+        .center {
+          margin: auto;
+          width: 50%;
+          text-align: center;
+          margin-top: 50px;
+          border: 1px solid white;
+        }
+
+        th {
+          background-color: skyblue;
+          padding: 10px;
+        }
+
+        tr {
+          border:1px solid white;
+          padding: 10px;
+        }
+
     </style>
 
     </head>
@@ -63,6 +81,25 @@
 
                   <input class="btn btn-primary" type="submit" value="Add Category">
                 </form>
+
+                <div>
+
+                <table class="center">
+
+                <tr>
+                  <th>Category Name</th>
+                </tr>
+
+                @foreach($data as $data)
+                <tr>
+                  <td>{{$data->cat_title}}</td>
+                </tr>
+
+                @endforeach
+
+                </table>
+
+                </div>
 
             </div>
           

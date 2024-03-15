@@ -37,7 +37,9 @@ class AdminController extends Controller
 
     public function category_page () {
 
-        return view('admin.category');
+        $data = Category::all();
+
+        return view('admin.category', compact('data'));
     }
     
     public function add_category (Request $request) {
