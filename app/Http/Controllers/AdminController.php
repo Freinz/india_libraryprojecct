@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Models\User;
 
+use App\Models\Category;
+
 use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
@@ -31,5 +33,22 @@ class AdminController extends Controller
             return redirect()->back();
         }
 
+    }
+
+    public function category_page () {
+
+        return view('admin.category');
+    }
+    
+    public function add_category (Request $request) {
+        
+        $data = new Category;
+
+        $data->cat_title = $request->category;
+
+        $data->save();
+
+        return redirect()->back();
+       
     }
 }
