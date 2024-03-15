@@ -60,7 +60,7 @@ class AdminController extends Controller
 
         $data->delete();
 
-        return redirect()->back(); // agar kembali ke page yang sama
+        return redirect()->back()->with('message', 'category deleted succesfully'); // agar kembali ke page yang sama
 
     }
 
