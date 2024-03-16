@@ -40,3 +40,8 @@ Route::get('/cat_delete/{id}', [AdminController::class,'cat_delete']);
 Route::get('/cat_read/{id}', [AdminController::class,'cat_read']);
 
 Route::post('/cat_update/{id}', [AdminController::class,'cat_update']);
+
+
+Route::get('/add_book', [AdminController::class,'add_book']);
+
+Route::post('/store_book', [AdminController::class,'store_book']);

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Models\User;
 
+use App\Models\Book;
+
 use App\Models\Category;
 
 use Illuminate\Support\Facades\Auth;
@@ -82,6 +84,58 @@ class AdminController extends Controller
         $data->save();
 
         return redirect('/category_page')->with ('message', 'Category Updated Succesfully'); // untuk kembali ke page awal setelah edit
+
+    }
+
+    public function add_book() {
+
+        $data = Category::all();
+
+        return view('admin.add_book', compact('data'));
+
+    }
+
+    public function store_book(Request $request) {
+
+        $data = new Book;
+
+        $data->title = $request->book_name;
+        
+        $data->auther_name = $request->auther_name;
+        
+        $data->price = $request->price;
+        
+        $data->quantity = $request->quantity;
+        
+        $data->description = $request->description;
+        
+        $data->category_id = $request->category;
+
+        $book_image = $request->book_img;
+
+        $auther_image = $request->auther_img;
+
+        if ($book_image) {
+
+            $book_image_name = time().'.'.$book_image->getClientOriginalExtension();
+
+            $request->  book_img->move('book',$book_image_name);
+
+            $data->book_img = $book_image_name;
+        }
+        
+        if ($auther_image) {
+
+            $auther_image_name = time().'.'.$auther_image->getClientOriginalExtension();
+
+            $request->  auther_img->move('book',$auther_image_name);
+
+            $data->auther_img = $auther_image_name;
+        }
+
+        $data->save();
+
+        return redirect()->back();
 
     }
 
