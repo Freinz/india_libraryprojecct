@@ -73,7 +73,7 @@
 
                 <h1 class="cat_label">Add Category</h1>
 
-                <form action="{{url('add_category')}}" method="Post">
+                <form action="{{url('cat_add')}}" method="Post">
 
                   @csrf
 
@@ -98,8 +98,12 @@
                 <tr>
                   <td>{{$data->cat_title}}</td>
                   <td>
+                    <a  class="btn btn-info" href="{{url('cat_read', $data->id)}}">Update</a>
+
                     <a onclick="confirmation(event)" class="btn btn-danger" href="{{url('cat_delete', $data->id)}}">Delete</a>
                   </td>
+                
+              
                 </tr>
 
                 

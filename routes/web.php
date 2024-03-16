@@ -32,6 +32,11 @@ Route::get('/home', [AdminController::class,'index']);
 
 Route::get('/category_page', [AdminController::class,'category_page']);
 
-Route::post('/add_category', [AdminController::class,'add_category']);
+Route::post('/cat_add', [AdminController::class,'cat_add']);
 
 Route::get('/cat_delete/{id}', [AdminController::class,'cat_delete']);
+
+
+Route::get('/cat_read/{id}', [AdminController::class,'cat_read']);
+
+Route::post('/cat_update/{id}', [AdminController::class,'cat_update']);
