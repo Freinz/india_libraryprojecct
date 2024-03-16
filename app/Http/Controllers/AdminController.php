@@ -128,7 +128,7 @@ class AdminController extends Controller
 
             $auther_image_name = time().'.'.$auther_image->getClientOriginalExtension();
 
-            $request->  auther_img->move('book',$auther_image_name);
+            $request->  auther_img->move('auther',$auther_image_name);
 
             $data->auther_img = $auther_image_name;
         }
@@ -136,6 +136,14 @@ class AdminController extends Controller
         $data->save();
 
         return redirect()->back();
+
+    }
+
+    public function show_book() {
+
+        $book = Book::all() ;
+
+        return view('admin.show_book', compact('book'));
 
     }
 
