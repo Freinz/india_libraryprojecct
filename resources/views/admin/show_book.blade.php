@@ -3,6 +3,8 @@
     <head> 
     @include('admin.css')
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <style>
         
         .table_center {
@@ -46,6 +48,18 @@
         <div class="page-header">
           <div class="container-fluid">
 
+          @if(session()->has('message'))
+
+          <div class="alert alert-success">
+            
+          <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">x</button>
+
+            {{session()->get('message')}}
+            
+          </div>
+
+          @endif
+
           <div>
 
           <table class="table_center">
@@ -59,6 +73,7 @@
             <th>Category</th>
             <th>Auther Image</th>
             <th>Book Image</th>
+            <th>Delete</th>
           </tr>
 
           @foreach($book as $book)
@@ -75,6 +90,11 @@
             <td>
                 <img class="img_book" src="book/{{$book->auther_img}}">
             </td>
+
+            <td>
+              <a onclick="confirmation(event)" href="{{url('book_delete', $book->id)}}" class="btn btn-danger">Delete</a>
+            </td>
+
           </tr>
           @endforeach
 
@@ -88,6 +108,32 @@
       
        
       @include('admin.footer')
+
+      <script type="text/javascript">
+
+    function confirmation(ev) {
+
+          ev.preventDefault();
+          var urlToRedirect = ev.currentTarget.getAttribute('href');
+          console.log(urlToRedirect);
+
+          swal ({
+            title: "Are you sure to Delete This",
+            text : "You will not be able to revert this!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
+
+          .then((willCancel) => {
+            if (willCancel) {
+              window.location.href = urlToRedirect;
+            }
+
+          });
+        }
+
+      </script>
 
        
   </body>

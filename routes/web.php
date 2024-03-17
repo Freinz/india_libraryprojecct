@@ -48,3 +48,5 @@ Route::post('/store_book', [AdminController::class,'store_book']);
 
 
 Route::get('/show_book', [AdminController::class,'show_book']);
+
+Route::get('/book_delete/{id}', [AdminController::class,'book_delete']);

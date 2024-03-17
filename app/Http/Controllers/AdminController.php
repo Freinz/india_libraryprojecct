@@ -147,4 +147,14 @@ class AdminController extends Controller
 
     }
 
+    public function book_delete($id) {
+
+        $data = Book::find($id);
+
+        $data->delete();
+
+        return redirect()->back()->with('message', 'Book has Deleted Succesfully');
+
+    }
+
 }
