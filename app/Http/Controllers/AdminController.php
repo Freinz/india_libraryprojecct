@@ -157,4 +157,63 @@ class AdminController extends Controller
 
     }
 
+    public function book_read($id) {
+
+        $data = Book::find($id);
+
+        $category = Category::all();
+
+        return view('admin.update_book', compact('data', 'category'));
+
+    }
+
+    
+    public function book_update(Request $request, $id) {
+
+
+        $data = Book::find($id);
+
+        $data->title = $request -> title;
+
+        $data->auther_name = $request -> auther_name;
+
+        $data->price = $request -> price;
+
+        $data->quantity = $request -> quantity;
+
+        $data->description = $request -> description;
+
+        $data->category_id = $request -> category;
+        
+        $book_image = $request->book_img;
+
+        $auther_image = $request->auther_img;
+
+        if ($auther_image) {
+
+            $auther_image_name = time().'.'.$auther_image->getClientOriginalExtension();
+
+            $request->  auther_img->move('auther',$auther_image_name);
+
+            $data->auther_img = $auther_image_name;
+        }
+
+        if ($book_image) {
+
+            $book_image_name = time().'.'.$book_image->getClientOriginalExtension();
+
+            $request->  book_img->move('book',$book_image_name);
+
+            $data->book_img = $book_image_name;
+        }
+        
+
+        $data->save();
+
+        return redirect('/show_book')->with ('message', 'Books Updated Succesfully'); // untuk kembali ke page awal setelah edit
+
+    }
+
+    
+
 }

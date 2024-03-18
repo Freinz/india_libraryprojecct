@@ -24,7 +24,7 @@
 
         .img_auther {
             width : 50px;
-            border_radius: 50%;
+            border-radius: 50px;
         }
 
         .img_book {
@@ -74,6 +74,7 @@
             <th>Auther Image</th>
             <th>Book Image</th>
             <th>Delete</th>
+            <th>Update</th>
           </tr>
 
           @foreach($book as $book)
@@ -88,11 +89,15 @@
                 <img class="img_auther" src="auther/{{$book->auther_img}}">
             </td>
             <td>
-                <img class="img_book" src="book/{{$book->auther_img}}">
+                <img class="img_book" src="book/{{$book->book_img}}">
             </td>
 
             <td>
               <a onclick="confirmation(event)" href="{{url('book_delete', $book->id)}}" class="btn btn-danger">Delete</a>
+            </td>
+           
+            <td>
+              <a href="{{url('book_read', $book->id)}}" class="btn btn-info">Update</a>
             </td>
 
           </tr>
