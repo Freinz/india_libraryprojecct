@@ -62,7 +62,7 @@
 
               <div class="alert alert-success">
                 
-              <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">x</button>
+              <button type="button" class="close" data-bs-dismiss="alert" aria-hidden="True">x</button>
  
                 {{session()->get('message')}}
                 
