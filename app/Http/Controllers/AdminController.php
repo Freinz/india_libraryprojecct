@@ -8,6 +8,8 @@ use App\Models\User;
 
 use App\Models\Book;
 
+use App\Models\Borrow;
+
 use App\Models\Category;
 
 use Illuminate\Support\Facades\Auth;
@@ -214,6 +216,14 @@ class AdminController extends Controller
         $data->save();
 
         return redirect('/show_book')->with ('message', 'Books Updated Succesfully'); // untuk kembali ke page awal setelah edit
+
+    }
+
+    public function borrow_request () {
+
+        $data = Borrow:: all();
+
+        return view('admin.borrow_request', compact('data'));
 
     }
 

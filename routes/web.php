@@ -60,3 +60,5 @@ Route::get('/book_details/{id}', [HomeController::class,'book_details']);
 
 
 Route::get('/borrow_books/{id}', [HomeController::class,'borrow_books']);
+
+Route::get('/borrow_request', [AdminController::class,'borrow_request']);
