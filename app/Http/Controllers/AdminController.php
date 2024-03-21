@@ -227,6 +227,86 @@ class AdminController extends Controller
 
     }
 
+    public function approved_book ($id) {
+
+        $data = Borrow::find($id);
+
+        $status = $data->status;
+
+        if ($status == 'approved') {
+            return redirect()->back();
+        }
+
+        else {
+
+        $data->status = 'approved';
+
+        $data->save();
+
+        $bookid = $data->book_id ;// mengambil foreign key yaitu book_id
+
+        $book = Book::find($bookid); // membuat data dari book terbaca semua
+
+        $book_qty = $book->quantity - '1'; // menspesifikasikan mengambil data quantity
+
+        $book-> quantity = $book_qty;
+
+        $book -> save();
+
+        return redirect()->back();
+
+        }
+
+        
+
+    }
+
+    public function return_book ($id) {
+
+        $data = Borrow::find($id);
+
+        $status = $data->status;
+
+        if ($status == 'returned') {
+            return redirect()->back();
+        }
+
+        else {
+
+        $data->status = 'returned';
+
+        $data->save();
+
+        $bookid = $data->book_id ;// mengambil foreign key yaitu book_id
+
+        $book = Book::find($bookid); // membuat data dari book terbaca semua
+
+        $book_qty = $book->quantity + '1'; // menspesifikasikan mengambil data quantity
+
+        $book-> quantity = $book_qty;
+
+        $book -> save();
+
+        return redirect()->back();
+
+        }
+
+        
+
+    }
+
+    public function rejected_book ($id) {
+
+        $data = Borrow::find($id);
+        
+        $data->status = "rejected";
+
+        $data->save();
+
+        return redirect()->back();
+
+    }
+
     
 
 }
