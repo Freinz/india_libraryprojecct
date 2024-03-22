@@ -8,6 +8,8 @@ use App\Models\Book;
 
 use App\Models\Borrow;
 
+use App\Models\User;
+
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -67,6 +69,23 @@ class HomeController extends Controller
                 return redirect()->back()->with('message', 'Not Engough Book Available');
 
             }
+
+    }
+
+    public function book_history() {
+
+        if (Auth::id()) {
+
+            $userid = Auth::user()->id; // read data dari user dengan menarik id
+
+            $data = Borrow::where('user_id', '=', $userid)->get();
+
+            return view('home.book_history', compact('data'));
+
+        }
+
+
+        
 
     }
 
