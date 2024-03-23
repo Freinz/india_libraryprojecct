@@ -72,3 +72,5 @@ Route::get('/rejected_book/{id}', [AdminController::class,'rejected_book']);
 Route::get('/book_history', [HomeController::class,'book_history']);
 
 Route::get('/cancel_req/{id}', [HomeController::class,'cancel_req']);
+
+Route::get('/explore', [HomeController::class,'explore']);

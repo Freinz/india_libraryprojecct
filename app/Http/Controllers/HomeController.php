@@ -96,5 +96,13 @@ class HomeController extends Controller
 
     }
 
+    public function explore() {
+
+        $data = Book::all(); // agar $data as $data bekerja
+
+        return view('home.explore', compact('data'));
+
+    }
+
 
 }
