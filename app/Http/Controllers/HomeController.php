@@ -10,6 +10,8 @@ use App\Models\Borrow;
 
 use App\Models\User;
 
+use App\Models\Category;
+
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -97,21 +99,35 @@ class HomeController extends Controller
     }
 
     public function explore() {
+        
+        $category = Category::all();
 
         $data = Book::all(); // agar $data as $data bekerja
 
-        return view('home.explore', compact('data'));
+        return view('home.explore', compact('data', 'category'));
 
     }
 
     public function search(Request $request) {
 
+        $category = Category::all();
+
         $search = $request->search;
 
         $data = Book::where('title', 'LIKE', '%'. $search. '%')->orWhere('auther_name', 'LIKE', '%'. $search. '%')->get(); // mengambil title di data Book
 
-        return view('home.explore', compact('data'));
+        return view('home.explore', compact('data', 'category'));
+        
+    }
+    
+    public function cat_search($id) {
 
+        $category = Category::all();
+        
+        $data = Book::where('category_id', $id)->get();
+        
+        return view('home.explore', compact('data', 'category'));
+    
     }
 
 
