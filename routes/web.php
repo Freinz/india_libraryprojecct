@@ -30,7 +30,7 @@ Route::middleware([
 Route::get('/home', [AdminController::class,'index']);
 
 
-Route::get('/category_page', [AdminController::class,'category_page']);
+Route::get('/category_page', [AdminController::class,'category_page'])->middleware(['auth', 'admin']);
 
 Route::post('/cat_add', [AdminController::class,'cat_add']);
 
@@ -42,12 +42,12 @@ Route::get('/cat_read/{id}', [AdminController::class,'cat_read']);
 Route::post('/cat_update/{id}', [AdminController::class,'cat_update']);
 
 
-Route::get('/add_book', [AdminController::class,'add_book']);
+Route::get('/add_book', [AdminController::class,'add_book'])->middleware(['auth', 'admin']);
 
 Route::post('/store_book', [AdminController::class,'store_book']);
 
 
-Route::get('/show_book', [AdminController::class,'show_book']);
+Route::get('/show_book', [AdminController::class,'show_book'])->middleware(['auth', 'admin']);
 
 Route::get('/book_delete/{id}', [AdminController::class,'book_delete']);
 
@@ -61,7 +61,7 @@ Route::get('/book_details/{id}', [HomeController::class,'book_details']);
 
 Route::get('/borrow_books/{id}', [HomeController::class,'borrow_books']);
 
-Route::get('/borrow_request', [AdminController::class,'borrow_request']);
+Route::get('/borrow_request', [AdminController::class,'borrow_request'])->middleware(['auth', 'admin']);
 
 Route::get('/approved_book/{id}', [AdminController::class,'approved_book']);
 
