@@ -224,7 +224,7 @@ class AdminController extends Controller
 
         $data->save();
 
-        return redirect('/show_book')->with ('message', 'Books Updated Succesfully'); // untuk kembali ke page awal setelah edit
+        return redirect('/show_book')->with('message', 'Books Updated Succesfully'); // untuk kembali ke page awal setelah edit
 
     }
 

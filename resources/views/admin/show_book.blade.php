@@ -48,11 +48,13 @@
         <div class="page-header">
           <div class="container-fluid">
 
+      
           @if(session()->has('message'))
 
-          <div class="alert alert-success">
+             <div class="alert alert-success">
+
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
             
-          <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">x</button>
 
             {{session()->get('message')}}
             
@@ -60,7 +62,7 @@
 
           @endif
 
-          <div>
+       <div>
 
           <table class="table_center">
 

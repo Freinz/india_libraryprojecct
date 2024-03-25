@@ -8,12 +8,6 @@
           </div>
         </div>
 
-       
-          
-        
-
-
-
         <div class="col-lg-6">
           <div class="filters">
             <ul>
@@ -32,7 +26,7 @@
             <div class="col-lg-6 currently-market-item all msc">
               <div class="item">
                 <div class="left-image">
-                  <img src="book/{{$data->book_img}}" alt="" style="border-radius: 20px; min-width: 195px;">
+                  <img src="book/{{$data->book_img}}" alt="" style="border-radius: 20px; width: 1000px; height: auto;">
                 </div>
                 <div class="right-content">
                   <h4>{{$data->title}}</h4>

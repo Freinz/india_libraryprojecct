@@ -27,34 +27,34 @@ Route::middleware([
     })->name('dashboard');
 });
 
-Route::get('/home', [AdminController::class,'index']);
+Route::get('/home', [AdminController::class,'index'])->middleware(['auth', 'admin']);;
 
 
 Route::get('/category_page', [AdminController::class,'category_page'])->middleware(['auth', 'admin']);
 
-Route::post('/cat_add', [AdminController::class,'cat_add']);
+Route::post('/cat_add', [AdminController::class,'cat_add'])->middleware(['auth', 'admin']);;
 
-Route::get('/cat_delete/{id}', [AdminController::class,'cat_delete']);
+Route::get('/cat_delete/{id}', [AdminController::class,'cat_delete'])->middleware(['auth', 'admin']);;
 
 
-Route::get('/cat_read/{id}', [AdminController::class,'cat_read']);
+Route::get('/cat_read/{id}', [AdminController::class,'cat_read'])->middleware(['auth', 'admin']);;
 
-Route::post('/cat_update/{id}', [AdminController::class,'cat_update']);
+Route::post('/cat_update/{id}', [AdminController::class,'cat_update'])->middleware(['auth', 'admin']);;
 
 
 Route::get('/add_book', [AdminController::class,'add_book'])->middleware(['auth', 'admin']);
 
-Route::post('/store_book', [AdminController::class,'store_book']);
+Route::post('/store_book', [AdminController::class,'store_book'])->middleware(['auth', 'admin']);;
 
 
 Route::get('/show_book', [AdminController::class,'show_book'])->middleware(['auth', 'admin']);
 
-Route::get('/book_delete/{id}', [AdminController::class,'book_delete']);
+Route::get('/book_delete/{id}', [AdminController::class,'book_delete'])->middleware(['auth', 'admin']);;
 
-Route::get('/book_read/{id}', [AdminController::class,'book_read']);
+Route::get('/book_read/{id}', [AdminController::class,'book_read'])->middleware(['auth', 'admin']);;
 
 
-Route::post('/book_update/{id}', [AdminController::class,'book_update']);
+Route::post('/book_update/{id}', [AdminController::class,'book_update'])->middleware(['auth', 'admin']);;
 
 Route::get('/book_details/{id}', [HomeController::class,'book_details']);
 
@@ -63,11 +63,11 @@ Route::get('/borrow_books/{id}', [HomeController::class,'borrow_books']);
 
 Route::get('/borrow_request', [AdminController::class,'borrow_request'])->middleware(['auth', 'admin']);
 
-Route::get('/approved_book/{id}', [AdminController::class,'approved_book']);
+Route::get('/approved_book/{id}', [AdminController::class,'approved_book'])->middleware(['auth', 'admin']);;
 
-Route::get('/return_book/{id}', [AdminController::class,'return_book']);
+Route::get('/return_book/{id}', [AdminController::class,'return_book'])->middleware(['auth', 'admin']);;
 
-Route::get('/rejected_book/{id}', [AdminController::class,'rejected_book']);
+Route::get('/rejected_book/{id}', [AdminController::class,'rejected_book'])->middleware(['auth', 'admin']);;
 
 Route::get('/book_history', [HomeController::class,'book_history']);
 
